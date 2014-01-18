@@ -1,4 +1,623 @@
-<h1>Welcome to this Site</h1>
+<!DOCTYPE html>
+<html>
+ <head>
+  <style type="text/css">
+         .com{ width:200px;height:30px;border:1px solid black;margin-bottom:5px;background-color:red;color:white;border-radius:5px}
+         .ext{ border:2px solid blue; }
+         .set{border:1px solid black;border-radius:3px;height:20px}
+         .comm{ border:1px solid maroon}
+         .but{border:1px solid black;margin:5px;background-color:red;color:white;border-radius:5px;width:100px;height:27px;}
+         td{border:1px solid blue }
+         #header{width:1200px;height:100px;border:1px solid black;margin:0px auto;border-radius:10px;background-color:#a1a1a1;}
+         #contain{width:1200px;height:300px;border:1px solid black;margin:0px auto;border-radius:10px;background-color:#a1a1a1;}
+         #sp{width:250px;height:300px;float:left;margin-top:20px;margin-left:30px;}
+         #main{ width:850px;height:auto;border:1px solid red;margin-right:30px;float:right;border:1px solid black;}	
+         #tlb{ width:850px}
+         #sel{ width:200px}
+	 #to{color:red;font-weight:bold}
+	#to1{color:red;font-weight:bold}
+  </style><link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
 
-<p> this site is for only testing </p>
-<small>new added</small>
+ <script src="jquery-1.9.1.js"></script>
+ <script src="jquery-1.10.2.min.js"></script>
+ <script src="jquery-ui-1.10.3.custom.min.js"></script>
+ <script src="jquery-ui-1.10.3/jquery-ui.js"></script>
+ <script type="text/javascript">
+
+   var a;  
+   var b;
+   var c;
+   var d;
+   var normal;
+
+   var i1;
+   var i2;
+   var i3;
+   var i4;
+   var tt;
+
+   var amt;
+   var amt2;
+   var amt3;
+   var amt4;
+
+  var j_fun=function(numbr)
+  {
+     var str=new String(numbr)   
+     var splt=str.split("");
+     var rev=splt.reverse();
+     var once=['Zero', ' One', 'Two', 'Three', 'Four',  'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+     var twos=['Ten', ' Eleven', ' Twelve', ' Thirteen', ' Fourteen', ' Fifteen', ' Sixteen', ' Seventeen', ' Eighteen', ' Nineteen'];
+     var tens=[ '', 'Ten', ' Twenty', ' Thirty', ' Forty', ' Fifty', ' Sixty', ' Seventy', ' Eighty', ' Ninety' ];
+     numlen=rev.length;
+     var word=new Array();
+     
+     var j=0;   
+     for(i=0;i<numlen;i++)
+       {
+          switch(i)
+           {
+            case 0:
+                  if((rev[i]==0) || (rev[i+1]==1))
+                   {
+                      word[j]='';                    
+                   }
+                   else
+                   {
+                     word[j]=once[rev[i]];
+                    }
+                   word[j]=word[j] ;
+                   
+                   break;
+            case 1:
+                abovetens();  
+                   break;
+           case 2:
+                if(rev[i]==0)
+                {
+                  word[j]='';
+                } 
+               else if((rev[i-1]==0) || (rev[i-2]==0) )
+                {
+                   word[j]=once[rev[i]]+"Hundred ";                
+                }
+                else 
+                {
+                    word[j]=once[rev[i]]+"Hundred and";
+                } 
+               break;
+             case 3:
+                    if(rev[i]==0 || rev[i+1]==1)
+                   {
+                      word[j]='';                    
+                   } 
+                   else
+                   {
+                     word[j]=once[rev[i]];
+                   }
+                if((rev[i+1]!=0) || (rev[i] > 0))
+                {
+                   word[j]= word[j]+" Thousand";
+                }
+                  break;  
+             case 4:
+                  abovetens(); 
+                    break;  
+           
+              case 5:
+                   if((rev[i]==0) || (rev[i+1]==1))
+                   {
+                      word[j]='';                    
+                   } 
+                   else
+                   {
+                     word[j]=once[rev[i]];
+                   }
+                word[j]=word[j]+"Lakhs";
+                  break;  
+          
+           case 6:
+                  abovetens(); 
+                    break;
+         
+          case 7:
+                   if((rev[i]==0) || (rev[i+1]==1))
+                   {
+                      word[j]='';                    
+                   } 
+                   else
+                   {
+                     word[j]=once[rev[i]];
+                   }
+              word[j]= word[j]+"Crore";
+                    break;  
+          
+           case 8:
+                  abovetens(); 
+                    break;    
+                 default:
+                 break;
+              }
+       
+          j++;  
+       
+       }   
+  
+ function abovetens()
+ {
+     if(rev[i]==0)
+        {
+            word[j]='';
+        } 
+    else if(rev[i]==1)
+        {
+           word[j]=twos[rev[i-1]];
+        }
+       else
+         {
+             word[j]=tens[rev[i]];
+         }
+  }
+
+   word.reverse();
+   var finalw='';
+   for(i=0;i<numlen;i++)
+   {
+
+      finalw= finalw+word[i];
+
+    }
+
+        return finalw;
+}
+        
+
+  function del(el)
+        {
+          var del_i=$(el).parents("tr").children(".sub").text();
+          
+          if(del_i == "Apple")
+          {
+
+           a=0;
+           amt=0;
+           i1=0;
+          }
+          else if(del_i == "Banana")
+          {
+            b=0;
+            amt2=0;
+            i2=0;
+          }
+          else if(del_i == "Mengo")
+          {
+            c=0;
+            amt3=0;
+            i3=0;
+
+          }
+          else if(del_i == "Grape")
+          {
+            d=0;
+            amt4=0;
+            i4=0;
+          }
+
+          $(el).parents("tr").remove();
+
+           
+
+           i1=$("#i1").val();
+           i2=$("#i2").val();
+           i3=$("#i3").val();
+           i4=$("#i4").val();
+           i2=parseInt(i2);
+           i3=parseInt(i3);
+           i4=parseInt(i4);
+           i1=parseInt(i1);
+
+          
+
+          if(isNaN(i1))
+          {
+            i1=0;
+          }
+          if(isNaN(i2))
+          {
+            i2=0;
+          }
+          if(isNaN(i3))
+          {
+            i3=0;
+          }
+          if(isNaN(i4))
+          {
+            i4=0;
+          }
+           
+           amt=i1*10;
+           amt2=i2*20;
+           amt3=i3*30;
+           amt4=i4*40;
+          
+         $("#to").text(i1+i2+i3+i4);
+          
+          var ttt=amt+amt2+amt3+amt4;
+          var ans=j_fun(ttt);
+          $("#to1").text(ans);
+   }
+ 
+  $(document).ready(function(){
+   
+
+
+      $("#div1").draggable({
+ 
+          helper:'clone',
+          drag: function(event,ui){
+     
+          if(a==50)
+          {
+	           normal=1;	
+	        }else{
+             normal=1;
+             $(this).css({"border":"2px solid yellow"});
+            
+          a=10;}
+        }
+      });
+ 
+  $("#div2").draggable({
+         helper:'clone',
+         drag: function(event,ui){
+
+         if(b==50)
+         {
+	          normal=2;
+         }else{
+	          normal=2;
+            $(this).css({"border":"2px solid yellow"});
+          b=10;}
+        }
+  },"enable");
+
+  $("#div3").draggable({
+          helper:'clone',
+          drag: function(event,ui){
+          if(c==50)
+          {
+             normal=3;
+          }else{
+             normal=3;
+             $(this).css({"border":"2px solid yellow"});
+           c=10;}
+         }
+  });
+
+  $("#div4").draggable({
+           helper:'clone',
+           drag: function(event,ui){
+           if(d==50)
+           {
+            normal=4;
+           }else{
+            normal=4;
+            $(this).css({"border":"2px solid yellow"});
+          d=10;}
+         }
+  });
+
+$( "#main" ).droppable(
+{
+           drop: function( event, ui ) 
+           {
+		
+                var amt=10;
+                var amt2=20;
+                var amt3=30;
+                var amt4=40;
+		
+		            if(normal==1)
+		            {           		      
+			
+		              if(a==10)
+		              {
+			                $("#tlb").append("<tr><td class='sub'>Apple</td><td><input   id='i1' class='set' type='text'  maxlength='4' onkeyup='myFunction(this)' onkeypress='return isNumber(this)' ></td><td>10</td><td><span id='span1'>10</span></td><td><button id='del' onclick='del(this)' class='but'>Delete</button></td></tr>"); 
+	                    $("#i1").val(0);     
+	                     a=50;
+ 		              }
+		              if(a==50)
+                  {
+		                  i1=$("#i1").val();
+                      i1=parseInt(i1) + 1;
+  		                $("#i1").val(i1);
+		              }
+		            }
+
+
+ 		           if(normal==2)
+  		          {
+                   if(b==10) 
+		               {
+                       $("#tlb").append("<tr><td class='sub'>Banana</td><td><input id='i2' maxlength='4' class='set' type='text' onkeyup='myFunction(this)' onkeypress='return isNumber(this)'  ></td><td>20</td><td><span id='span2'>20<span></td><td><button id='del' onclick='del(this)' class='but'>Delete</button></td></tr>"); 
+		                   $("#i2").val(0);
+		                    b=50
+   		              }
+		               if(b==50)
+		               {
+		                    i2=$("#i2").val();
+                        i2=parseInt(i2) + 1;
+		                    $("#i2").val(i2);
+		                }
+  		          }
+		  
+		          if(normal==3)
+ 		          {
+                  if(c==10)
+ 		              {
+                     $("#tlb").append("<tr><td class='sub'>Mengo</td><td><input id='i3' maxlength='4'  class='set' type='text' onkeyup='myFunction(this)' onkeypress='return isNumber(this)' ></td><td>30</td><td><span id='span3'>30</span></td><td><button id='del' onclick='del(this)' class='but'>Delete</button></td></tr>");  
+		                 $("#i3").val(0);
+                      c=50;
+		              }
+		              if(c==50)
+		              {
+		                i3=$("#i3").val();
+                    i3=parseInt(i3) + 1;
+		                $("#i3").val(i3);
+		              }
+		          }
+
+ 		         if(normal==4)
+ 		         {
+                  if(d==10)
+ 		              {
+                     $("#tlb").append("<tr><td class='sub'>Grape</td><td><input maxlength='4' onkeyup='myFunction(this)' onkeypress='return isNumber(this)' id='i4' class='set' type='text'></td><td>40</td><td><span id='span4'>"+amt4+"</sapn></td><td><button id='del' onclick='del(this)' class='but'>Delete</button></td></tr>");  
+		                 $("#i4").val(0);
+		                  d=50;
+		              }
+		              if(d==50)
+		              {
+		                i4=$("#i4").val();
+                    i4=parseInt(i4) + 1;
+		                $("#i4").val(i4);
+		              }
+		          }
+
+		
+		   		  
+
+		i1=$("#i1").val();
+    i1=parseInt(i1);
+		amt=amt*i1;
+    var amtans=j_fun(amt);
+		$("#span1").text(amtans);
+
+		       if(isNaN(i1))
+			{
+			  i1=0;
+			}
+			if(isNaN(amt))
+			{
+			 amt=0;
+			}
+
+		 i2=$("#i2").val();
+                   i2=parseInt(i2);
+                   amt2=amt2*i2;
+                   var amt2ans2=j_fun(amt2);
+		   $("#span2").text(amt2ans2);
+			 
+                        if(isNaN(i2))
+			{
+			  i2=0;
+			}
+			if(isNaN(amt2))
+			{
+			  amt2=0;
+			}
+		
+                  i3=$("#i3").val();
+                  i3=parseInt(i3);
+                   amt3=amt3*i3;
+                   var amt3ans3=j_fun(amt3);
+		   $("#span3").text(amt3ans3);
+
+			if(isNaN(i3))
+			{
+			  i3=0;
+			}
+			if(isNaN(amt3))
+			{
+			  amt3=0;
+			}
+
+       		   i4=$("#i4").val();
+                   i4=parseInt(i4);
+	           amt4=amt4*i4;
+             var amt4ans4=j_fun(amt4);
+		   $("#span4").text(amt4ans4);
+
+			if(isNaN(i4))
+			{
+			  i4=0;
+			}
+			if(isNaN(amt4))
+			{
+			  amt4=0;
+			}
+  		   $("#to").text(i1+i2+i3+i4);
+		  
+       var ttt= amt+amt2+amt3+amt4;
+      
+      var ans=j_fun(ttt);
+      $("#to1").text(ans);
+    
+           }
+    });
+  });
+
+
+
+
+function isNumber(evt) {
+
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode != 45 && (charCode != 46 || $(this).val().indexOf('.') != -1) && 
+                (charCode < 48 || charCode > 57))
+        {
+            return false;
+        }
+        else
+        {
+        return true;
+        }
+    }
+
+
+function myFunction(e)
+{
+            var del_i=$(e).parents("tr").children(".sub").text();
+
+            
+              
+    
+
+            if(del_i=="Apple")
+            {
+              amt=10;
+              i1=$("#i1").val();  
+              i1=parseInt(i1);
+              if(isNaN(i1))
+            {
+              i1=0;
+            }
+              amt=amt*i1;
+             var amtans=j_fun(amt);
+    $("#span1").text(amtans);            
+           
+           }
+           if(del_i=="Banana")
+            {
+              amt2=20;
+              i2=$("#i2").val();  
+              i2=parseInt(i2);
+              if(isNaN(i2))
+            {
+              i2=0;
+            }
+              amt2=amt2*i2;
+             var amt2ans2=j_fun(amt2);
+    $("#span2").text(amt2ans2);            
+           
+           }
+           if(del_i == "Mengo")
+          {
+            
+           amt3=30;
+            i3=$("#i3").val();
+            i3=parseInt(i3);
+            if(isNaN(i3))
+            {
+              i3=0;
+            }
+            amt3=amt3*i3;
+            var amt3ans3=j_fun(amt3);
+    $("#span3").text(amt3ans3);
+          }
+           if(del_i == "Grape")
+          {
+            
+           amt4=40;
+            i4=$("#i4").val();
+            i4=parseInt(i4);
+            if(isNaN(i4))
+            {
+              i4=0;
+            }
+            amt4=amt4*i4;
+            var amt4ans4=j_fun(amt4);
+    $("#span4").text(amt4ans4);
+          }
+
+          
+
+         
+
+          i1=$("#i1").val();
+           i2=$("#i2").val();
+           i3=$("#i3").val();
+           i4=$("#i4").val();
+           i2=parseInt(i2);
+           i3=parseInt(i3);
+           i4=parseInt(i4);
+           i1=parseInt(i1);
+
+          
+          
+          if(isNaN(i1))
+          {
+            i1=0;
+          }
+          if(isNaN(i2))
+          {
+            i2=0;
+          }
+          if(isNaN(i3))
+          {
+            i3=0;
+          }
+          if(isNaN(i4))
+          {
+            i4=0;
+          }
+
+          amt=i1*10;
+          amt2=i2*20;
+          amt3=i3*30;
+          amt4=i4*40;
+          
+         $("#to").text(i1+i2+i3+i4);
+          
+          var ttt=amt+amt2+amt3+amt4;
+          var ans=j_fun(ttt);
+          $("#to1").text(ans);
+}
+
+ </script>
+ </head>
+ <body>
+  <div id="header">
+  </br> 
+    &nbsp; &nbsp; Enter Name :- <input type="text" name="fname" style="border:1px solid black;border-radius:3px;height:20px"></br></br>
+    &nbsp; &nbsp; Enter City :- <input type="text" name="city" style="border:1px solid black;border-radius:3px;height:20px">
+  </div>
+  </br>
+  <div id="contain">
+  <div id="sp">
+  <div id="div1" class="com">Apple Only 10/- Rs.</div>
+  <div id="div2" class="com">Banana Only 20/- Rs.</div>
+  <div id="div3" class="com">Mango Only 30/- Rs.</div>
+  <div id="div4" class="com">Grape Only 40/- Rs.</div>
+  </div>
+  </br>
+ 
+  <div id="main">
+  <table id="tlb">
+   <tr>
+    <th class="comm">Item Name</th>
+    <th class="comm">Quantity</th>
+    <th class="comm">Price</th>
+    <th class="comm">Amount</th>
+    <th class="comm">Delete</th>
+   </tr>
+  </table>
+  <center><p>Total Quantity is <span id="to">0</span> and Total Amount is <span id="to1">0</span></p></center>
+  
+  </div>
+  </br>
+</br>
+</br>
+  </div>
+
+ </body>
+</html>
